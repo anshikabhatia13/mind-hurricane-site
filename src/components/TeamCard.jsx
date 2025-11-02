@@ -1,4 +1,3 @@
-// src/components/TeamCard.jsx
 import React from "react";
 
 export default function TeamCard({ img, name, role }) {

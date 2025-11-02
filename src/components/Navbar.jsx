@@ -1,12 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import logoImg from "../assets/images/mind-hurricane-logo.jpg";
 
-/**
- * Navbar replicates the original nav:
- * - Shrinks on scroll
- * - Mobile hamburger toggles nav links and backdrop
- * - Links use anchors to sections
- */
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [shrink, setShrink] = useState(false);
@@ -24,11 +18,10 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    // Show/hide backdrop element
-    if (backdropRef.current) backdropRef.current.style.display = open ? "block" : "none";
+    if (backdropRef.current)
+      backdropRef.current.style.display = open ? "block" : "none";
   }, [open]);
 
-  // close menu when link clicked
   function onLinkClick() {
     setOpen(false);
   }
@@ -51,19 +44,17 @@ export default function Navbar() {
           </div>
         </div>
 
-        <div className={`nav-links ${open ? "show" : ""}`} id="nav-links" ref={navLinksRef}>
-            <a href="#home" onClick={onLinkClick}>
+        <div
+          className={`nav-links ${open ? "show" : ""}`}
+          id="nav-links"
+          ref={navLinksRef}
+        >
+          <a href="#home" onClick={onLinkClick}>
             Home
           </a>
           <a href="#about" onClick={onLinkClick}>
             About
           </a>
-          {/* <a href="#products" onClick={onLinkClick}>
-            Products
-          </a>
-          <a href="#industries" onClick={onLinkClick}>
-            Industries
-          </a> */}
           <a href="#team" onClick={onLinkClick}>
             Team
           </a>
@@ -73,7 +64,6 @@ export default function Navbar() {
           <a href="#reach" onClick={onLinkClick}>
             Reach
           </a>
-
         </div>
 
         <button
@@ -90,9 +80,12 @@ export default function Navbar() {
           <span />
         </button>
       </nav>
-
-      {/* Backdrop for mobile menu */}
-      <div id="backdrop" ref={backdropRef} aria-hidden={!open} onClick={() => setOpen(false)} />
+      <div
+        id="backdrop"
+        ref={backdropRef}
+        aria-hidden={!open}
+        onClick={() => setOpen(false)}
+      />
     </>
   );
 }

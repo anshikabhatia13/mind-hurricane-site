@@ -1,9 +1,4 @@
 import React, { useEffect, useRef } from "react";
-
-/**
- * Port of the multi-layer parallax particle system into a React component.
- * Uses a canvas ref and mounts/unmounts the animation cleanly.
- */
 export default function ParticlesCanvas() {
   const canvasRef = useRef(null);
   const rafRef = useRef(null);
@@ -22,9 +17,30 @@ export default function ParticlesCanvas() {
     sizeCanvas();
 
     const LAYERS = [
-      { name: "far", count: 90, vy: [0.03, 0.1], r: [0.5, 1.0], depth: 0.35, scroll: 0.1 },
-      { name: "mid", count: 80, vy: [0.06, 0.16], r: [0.7, 1.4], depth: 0.65, scroll: 0.18 },
-      { name: "near", count: 70, vy: [0.1, 0.22], r: [0.9, 1.8], depth: 1.0, scroll: 0.26 },
+      {
+        name: "far",
+        count: 90,
+        vy: [0.03, 0.1],
+        r: [0.5, 1.0],
+        depth: 0.35,
+        scroll: 0.1,
+      },
+      {
+        name: "mid",
+        count: 80,
+        vy: [0.06, 0.16],
+        r: [0.7, 1.4],
+        depth: 0.65,
+        scroll: 0.18,
+      },
+      {
+        name: "near",
+        count: 70,
+        vy: [0.1, 0.22],
+        r: [0.9, 1.8],
+        depth: 1.0,
+        scroll: 0.26,
+      },
     ];
     const TWINKLE = 0.035;
     const PARALLAX_MAX_X = 24;
@@ -92,10 +108,10 @@ export default function ParticlesCanvas() {
 
         ctx.save();
         const layerShiftX = parallax.x * cfg.depth;
-        const layerShiftY = parallax.y * cfg.depth + scrollY * cfg.scroll * 0.08;
+        const layerShiftY =
+          parallax.y * cfg.depth + scrollY * cfg.scroll * 0.08;
         ctx.translate(layerShiftX, layerShiftY);
 
-        // faint network lines per layer
         ctx.lineWidth = 0.5;
         for (let i = 0; i < particles.length; i++) {
           for (let j = i + 1; j < i + 10 && j < particles.length; j++) {
@@ -116,19 +132,14 @@ export default function ParticlesCanvas() {
           }
         }
 
-        // particles
         for (const p of particles) {
-          // constant downward drift
           p.y += p.vy;
-
-          // wrap to top when leaving bottom
           if (p.y - p.r > canvas.height) {
             p.y = -p.r - Math.random() * 20;
             p.x = Math.random() * canvas.width;
             p.vy = randIn(cfg.vy);
           }
 
-          // twinkle
           p.tw += TWINKLE;
           const tw = 0.5 + 0.5 * Math.sin(p.tw);
           const alpha = Math.min(1, p.a * (0.7 + 0.3 * tw));
@@ -149,7 +160,6 @@ export default function ParticlesCanvas() {
 
     draw();
 
-    // reveal-on-scroll observer (selects .reveal elements)
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -163,7 +173,6 @@ export default function ParticlesCanvas() {
     );
     document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
-    // cleanup
     return () => {
       cancelAnimationFrame(rafRef.current);
       window.removeEventListener("resize", sizeCanvas);

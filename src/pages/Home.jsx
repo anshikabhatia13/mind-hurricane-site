@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
-import heroImg from "../assets/images/shutterstock_533991019.jpg"; // update filename if needed
+import heroImg from "../assets/images/shutterstock_533991019.jpg"; 
 import "../styles/global.css";
 
 export default function Home() {
   useEffect(() => {
-    // Reveal-on-scroll observer for elements with .reveal
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -23,14 +22,13 @@ export default function Home() {
 
   return (
     <>
-      {/* HERO (full-bleed) */}
       <section
         className="home-hero reveal"
         style={{
           backgroundImage: `linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url(${heroImg})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center 36%',
-          backgroundRepeat: 'no-repeat'
+          backgroundSize: "cover",
+          backgroundPosition: "center 36%",
+          backgroundRepeat: "no-repeat",
         }}
         aria-label="Hero — Mind Hurricane"
       >
@@ -70,55 +68,38 @@ export default function Home() {
 
           <div className="feature-card">
             <h3>Secure Comms</h3>
-            <p>Encrypted low-latency links for remote operation and telemetry.</p>
-          </div>
-        </div>
-      </section>
-{/* 
-     
-      <section className="home-features-secondary reveal" aria-label="Capabilities">
-        <div className="container">
-          <div className="feature-grid">
-            <div className="feature-card small">
-              <h4>Edge AI</h4>
-              <p>Lightweight inference optimized for onboard processors.</p>
-            </div>
-            <div className="feature-card small">
-              <h4>Robust Autonomy</h4>
-              <p>Fail-safe planning and resilient decision making.</p>
-            </div>
-            <div className="feature-card small">
-              <h4>Integration</h4>
-              <p>Seamless tooling and secure telemetry interfaces.</p>
-            </div>
+            <p>
+              Encrypted low-latency links for remote operation and telemetry.
+            </p>
           </div>
         </div>
       </section>
 
-      <section className="home-about reveal" id="about-summary" aria-label="About summary">
-        <div className="container">
-          <h3>Why Mind Hurricane</h3>
-          <p>
-            We bridge rigorous research and practical engineering — building autonomous systems that are certifiable, field-tested and optimized for mission-critical use.
-          </p>
-        </div>
-      </section> */}
-
-      {/* Bottom CTA bar */}
-      <div className="bottom-cta reveal" role="region" aria-label="Call to action" >
-        <div className="container cta-inner" style={{
-          display: "flex",
-          gap: "20px",
-          justifyContent: "center",
-          margin: "0 auto 20px",
-          flexWrap: "wrap",
-        }}>
+      <div
+        className="bottom-cta reveal"
+        role="region"
+        aria-label="Call to action"
+      >
+        <div
+          className="container cta-inner"
+          style={{
+            display: "flex",
+            gap: "20px",
+            justifyContent: "center",
+            margin: "0 auto 20px",
+            flexWrap: "wrap",
+          }}
+        >
           <div className="cta-text">
             <strong>Ready to evaluate autonomous systems?</strong>
-            <span>Schedule a pilot or request a technical discussion with our team.</span>
+            <span>
+              Schedule a pilot or request a technical discussion with our team.
+            </span>
           </div>
           <div>
-            <a className="btn btn-primary small" href="#contact">Talk to Sales</a>
+            <a className="btn btn-primary small" href="#contact">
+              Talk to Sales
+            </a>
           </div>
         </div>
       </div>

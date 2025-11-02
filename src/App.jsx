@@ -8,10 +8,7 @@ import Reach from "./pages/Reach";
 import Team from "./pages/Team";
 import Home from "./pages/Home";
 
-/**
- * Single-page layout using anchors to match the original HTML.
- * Keep sections in the same order so anchors work exactly as before.
- */
+
 export default function App() {
   return (
     <>
@@ -42,9 +39,7 @@ export default function App() {
           <section id="reach" aria-labelledby="h-reach">
             <Reach />
           </section>
-
         </main>
-        {/* <Route path="/team" element={<Team />} /> */}
         <Footer />
       </div>
     </>
