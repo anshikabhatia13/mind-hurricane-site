@@ -3,7 +3,7 @@
 =========================== */
 :root{
   --neon-b:#00ff88;
-  --neon-bright:#00ff55;
+  --neon-bright:#2f7c48;
   --neon-c:#00ffee;
   --neon-d:#c800ff;
   --line:rgba(0,255,204,.12);
@@ -238,14 +238,22 @@ section.boxed{
 @media (min-width:1600px){ .reach-wrap{max-width:1500px;} }
 
 /* ===== SHARED PANEL CARD (used by Reach + Contact) ===== */
-.panel-card{
-  position:relative;border-radius:18px;padding:32px;
-  background:linear-gradient(180deg,rgba(0,255,170,.10),rgba(0,0,0,.25));
-  border:1px solid rgba(0,255,200,.18);box-shadow:0 0 40px rgba(0,255,200,.10);
-  overflow:hidden;transform-style:preserve-3d;transition:transform .35s,box-shadow .35s,filter .35s
+.panel-card {
+  position: relative;
+  padding: 32px;
+  background: rgba(10, 20, 40, 0); /* Deep muted blue */
+  border: 1px solid rgba(130, 160, 200, 0); /* Soft blue border */
+  box-shadow: 0 0 34px rgba(0, 50, 100, 0.468); /* Muted blue glow */
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.35s, box-shadow 0.35s, filter 0.35s;
+  border-radius: 0; /* Straight corners */
 }
-.panel-card:hover{transform:translateY(-6px) rotateX(6deg) rotateY(-4deg);box-shadow:0 20px 50px rgba(0,255,200,.18);filter:brightness(1.06)}
-
+.panel-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 36px rgba(0, 50, 100, 0.35);
+  filter: brightness(1.05);
+}
 /* Reach – grid inside the card */
 .map-grid{display:grid;grid-template-columns:1fr;gap:22px;align-items:start}
 @media (min-width:900px){ .map-grid{grid-template-columns:1.05fr 1.6fr;gap:28px} }
@@ -292,7 +300,7 @@ section.boxed{
 
 /* form controls */
 input,textarea{
-  width:100%;padding:12px 14px;border:none;border-radius:10px;background:#111a2f;color:#fff;
+  width:100%;padding:12px 14px;border:none;border-radius:10px;background:#9096a427;color:#fff;
   margin:0 0 12px;font-size:1rem;outline:none
 }
 button{

@@ -37,7 +37,7 @@ export default function Contact() {
             <button type="submit">Submit</button>
           </form>
 
-          <p className="sub" style={{ marginTop: 14 }}>
+          <p className="sub" style={{ marginTop: 7 }}>
             📧 <strong>Email:</strong>{" "}
             <a href="mailto:mindhurricane.tech@gmail.com">mindhurricane.tech@gmail.com</a>
           </p>
