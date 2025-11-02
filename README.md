@@ -21,11 +21,11 @@ The site is built with **React** and designed to be fast, modular, and visually 
 ```plaintext
 src/
 ├── api/
-│   └── contactService.js        // (optional) future API integration for contact form
+│   └── contactService.js        
 │
 ├── assets/
 │   └── images/
-│       └── mind-hurricane-logo.png    // Move logo image here
+│       └── mind-hurricane-logo.png    
 │
 ├── components/
 │   ├── Navbar.jsx
@@ -39,7 +39,7 @@ src/
 │
 ├── styles/
 │   ├── global.css
-│   └── components.css              // optional, for component-scoped styles
+│   └── components.css             
 │
 ├── App.jsx
 ├── main.jsx

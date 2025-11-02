@@ -45,7 +45,16 @@ export default function Team() {
     <section id="team" className="team-section">
       <h2 className="team-title">Meet Our Team</h2>
 
-      <div className="team-filters">
+       <div
+        className="team-filters"
+        style={{
+          display: "flex",
+          gap: "10px",
+          justifyContent: "center",
+          margin: "0 auto 20px",
+          flexWrap: "wrap",
+        }}
+      >
         {filters.map((f) => (
           <button
             key={f}

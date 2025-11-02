@@ -1,115 +1,127 @@
-// src/pages/Home.jsx
-import React from "react";
-import heroImg from "../assets/images/shutterstock_533991019.jpg"; // placeholder image path
-import "../styles/components.css";
+import React, { useEffect } from "react";
+import heroImg from "../assets/images/shutterstock_533991019.jpg"; // update filename if needed
+import "../styles/global.css";
 
 export default function Home() {
+  useEffect(() => {
+    // Reveal-on-scroll observer for elements with .reveal
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
   return (
-    <main>
-      {/* HERO */}
-      <section className="home-hero">
-        <div
-          className="home-hero-bg"
-          style={{ backgroundImage: `url(${heroImg})` }}
-          aria-hidden="true"
-        />
-        <div className="home-hero-overlay" />
+    <>
+      {/* HERO (full-bleed) */}
+      <section
+        className="home-hero reveal"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url(${heroImg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center 36%',
+          backgroundRepeat: 'no-repeat'
+        }}
+        aria-label="Hero — Mind Hurricane"
+      >
+        <div className="home-overlay" aria-hidden="true" />
 
-        <div className="home-hero-content reveal">
-          <div className="home-hero-left">
-            <h1 className="hero-title">Autonomous Robotics for Real-World Impact</h1>
-            <p className="hero-sub">
-              IIT-incubated Mind Hurricane designs AI-driven autonomous drones and robotic systems for defence,
-              policing, and agri-tech — robust, safe and deployable.
-            </p>
+        <div className="home-content">
+          <h1 className="hero-title">
+            Autonomous Robotics for Real-World Impact
+          </h1>
 
-            <div className="hero-ctas">
-              <a className="link-btn" href="#contact">Get in Touch</a>
-              <a className="ghost-btn" href="#about">Learn More</a>
-            </div>
+          <p className="hero-subtitle">
+            IIT-Ropar incubated Mind Hurricane designs AI-driven autonomous
+            drones and robotic systems for defence, policing, and agri-tech.
+          </p>
 
-            <div className="hero-trust">
-              <span>Trusted by</span>
-              <div className="trust-logos">
-                <div className="logo-pill">IIT ROPAR</div>
-                <div className="logo-pill">Govt Partner</div>
-                <div className="logo-pill">Research Labs</div>
-              </div>
-            </div>
+          <div className="hero-buttons">
+            <a className="btn btn-primary" href="#contact">
+              Get in Touch
+            </a>
+            <a className="btn btn-ghost" href="#about">
+              Learn More
+            </a>
+          </div>
+        </div>
+
+        {/* Features row inside hero */}
+        <div className="feature-row" aria-hidden="true">
+          <div className="feature-card">
+            <h3>Resilient Perception</h3>
+            <p>Robust vision & sensor fusion in adverse conditions.</p>
           </div>
 
-          {/* <div className="home-hero-right">
-            Large glass card to mimic screenshot product-panel
-            <div className="hero-panel">
-              <div className="panel-media" aria-hidden="true" />
-              <div className="panel-body">
-                <h3>Edge AI · Robust Autonomy</h3>
-                <p>Lightweight onboard inference, resilient perception, and fail-safe planning for uncertain environments.</p>
-                <div className="panel-meta">
-                  <span>Edge processing</span>
-                  <span>Multi-modal sensing</span>
-                  <span>Real-time control</span>
-                </div>
-                <div style={{ marginTop: 10 }}>
-                  <a className="link-btn" href="#reach">Request Demo</a>
-                </div>
-              </div>
-            </div>
-          </div> */}
+          <div className="feature-card">
+            <h3>Adaptive Planning</h3>
+            <p>Probabilistic planning that handles uncertainty in the field.</p>
+          </div>
+
+          <div className="feature-card">
+            <h3>Secure Comms</h3>
+            <p>Encrypted low-latency links for remote operation and telemetry.</p>
+          </div>
         </div>
       </section>
-
-      {/* FEATURES */}
-      <section className="home-features reveal">
+{/* 
+     
+      <section className="home-features-secondary reveal" aria-label="Capabilities">
         <div className="container">
           <div className="feature-grid">
-            <div className="feature-card">
-              <h4>Resilient Perception</h4>
-              <p>Robust vision & sensor fusion in adverse conditions.</p>
+            <div className="feature-card small">
+              <h4>Edge AI</h4>
+              <p>Lightweight inference optimized for onboard processors.</p>
             </div>
-            <div className="feature-card">
-              <h4>Adaptive Planning</h4>
-              <p>Probabilistic planning that handles uncertainty in the field.</p>
+            <div className="feature-card small">
+              <h4>Robust Autonomy</h4>
+              <p>Fail-safe planning and resilient decision making.</p>
             </div>
-            <div className="feature-card">
-              <h4>Secure Comms</h4>
-              <p>Encrypted low-latency links for remote operation and telemetry.</p>
+            <div className="feature-card small">
+              <h4>Integration</h4>
+              <p>Seamless tooling and secure telemetry interfaces.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ABOUT SUMMARY */}
-      <section className="home-about reveal" id="about-summary">
+      <section className="home-about reveal" id="about-summary" aria-label="About summary">
         <div className="container">
-          <div className="about-split">
-            <div>
-              <h3>Why Mind Hurricane</h3>
-              <p>
-                We bridge rigorous research and practical engineering — building autonomous systems that are
-                certifiable, field-tested and optimised for mission-critical use. We partner with universities,
-                government and industry to accelerate deployment.
-              </p>
-            </div>
-            
-          </div>
+          <h3>Why Mind Hurricane</h3>
+          <p>
+            We bridge rigorous research and practical engineering — building autonomous systems that are certifiable, field-tested and optimized for mission-critical use.
+          </p>
         </div>
-      </section>
+      </section> */}
 
-      {/* CTA FOOTER */}
-      <section className="home-cta reveal">
-        <div className="container">
-          <div className="cta-row">
-            <div>
-              <h3>Ready to evaluate autonomous systems?</h3>
-              <p>Schedule a pilot or request a technical discussion with our team.</p>
-            </div>
-            <div>
-              <a className="link-btn" href="#contact">Talk to Sales</a>
-            </div>
+      {/* Bottom CTA bar */}
+      <div className="bottom-cta reveal" role="region" aria-label="Call to action" >
+        <div className="container cta-inner" style={{
+          display: "flex",
+          gap: "20px",
+          justifyContent: "center",
+          margin: "0 auto 20px",
+          flexWrap: "wrap",
+        }}>
+          <div className="cta-text">
+            <strong>Ready to evaluate autonomous systems?</strong>
+            <span>Schedule a pilot or request a technical discussion with our team.</span>
+          </div>
+          <div>
+            <a className="btn btn-primary small" href="#contact">Talk to Sales</a>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </>
   );
 }

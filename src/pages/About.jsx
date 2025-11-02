@@ -6,7 +6,7 @@ export default function About() {
       <div className="about-hero">
         <h2 className="about-title">About Us</h2>
         <p className="about-sub">
-          <strong>Mind Hurricane</strong> is an IIT-incubated robotics and AI startup
+          <strong>Mind Hurricane</strong> is an IIT Ropar incubated robotics and AI startup
           building next-generation autonomous systems for defence, policing, and
           agri-tech sectors.
         </p>

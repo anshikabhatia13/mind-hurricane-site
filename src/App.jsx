@@ -22,6 +22,7 @@ export default function App() {
         <div id="top" className="spacer" />
 
         <main>
+          <div id="flying-drone" aria-hidden="true"></div>
           <section id="home" aria-labelledby="h-home">
             <Home />
           </section>
